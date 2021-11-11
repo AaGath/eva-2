@@ -32,11 +32,16 @@ async def give_filter(client,message):
     for keyword in reversed(sorted(keywords, key=len)):
         pattern = r"( |^|[^\w])" + re.escape(keyword) + r"( |$|[^\w])"
         if re.search(pattern, name, flags=re.IGNORECASE):
-            reply_text, btn, alert, fileid = await find_filter(group_id, keyword)
+            reply_text, btn, alert, fileid = await find_filter(group_id, query)
 
             if reply_text:
                 reply_text = reply_text.replace("\\n", "\n").replace("\\t", "\t")
-
+            if filters:
+        results.append(
+                [
+                    InlineKeyboardButton("💢 𝗝𝗼𝗶𝗻 𝗢𝘂𝗿 𝗠𝗮𝗶𝗻 𝗰𝗵𝗮𝗻𝗻𝗲𝗹 💢", url=f"https://t.me/NewMoviesPF")
+                ]
+            )
             if btn is not None:
                 try:
                     if fileid == "None":
